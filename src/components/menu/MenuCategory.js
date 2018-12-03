@@ -22,7 +22,7 @@ class MenuCategory extends PureComponent {
     const {
       category: { title, menus }
     } = this.props;
-    console.log(this.props);
+
     return (
       <div className="menuCategory">
         <div className="title">{title}</div>

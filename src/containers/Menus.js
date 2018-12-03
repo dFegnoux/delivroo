@@ -1,10 +1,13 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import axios from "axios";
+import NewsBlock from "../components/blocks/NewsBlock";
 import PacmanLoader from "react-spinners/PacmanLoader";
 import MenuCategories from "../components/menu/MenuCategories";
+import isEmpty from "lodash/isEmpty";
 
 class Menus extends Component {
   state = {
+    restaurant: {},
     menu: []
   };
 
@@ -32,17 +35,31 @@ class Menus extends Component {
     // Get Menus
     axios.get("https://deliveroo-api.now.sh/menu").then(response => {
       this.setState(() => ({
-        menu: this.formatMenus(response.data.menu)
+        menu: this.formatMenus(response.data.menu),
+        restaurant: response.data.restaurant
       }));
     });
   }
 
   render() {
-    const { menu } = this.state;
+    const { menu, restaurant } = this.state;
     return (
-      <div className="menusContainer">
-        {!menu.length ? <PacmanLoader /> : <MenuCategories categories={menu} />}
-      </div>
+      <Fragment>
+        {!isEmpty(restaurant) && (
+          <NewsBlock
+            name={restaurant.name}
+            description={restaurant.description}
+            picture={restaurant.picture}
+          />
+        )}
+        <div className="menusContainer">
+          {!menu.length ? (
+            <PacmanLoader />
+          ) : (
+            <MenuCategories categories={menu} />
+          )}
+        </div>
+      </Fragment>
     );
   }
 }

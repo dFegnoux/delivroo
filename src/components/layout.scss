@@ -43,10 +43,7 @@ img {
 .layoutContent {
   display: flex;
   flex-direction: column;
-  margin: auto;
-  width: 100%;
-  max-width: $mainMaxWidth;
-  padding: 1rem;
+  align-items: center;
 }
 
 .st0 {

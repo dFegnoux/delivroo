@@ -29,6 +29,7 @@ class MenuCard extends PureComponent {
     const {
       item: { title, description, picture, price, popular }
     } = this.props;
+
     return (
       <div className="menuCard">
         <div className="content roundedItem">
