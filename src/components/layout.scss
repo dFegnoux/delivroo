@@ -1,0 +1,54 @@
+@import "../theme";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+.layout {
+  position: relative;
+  background-color: #f1f1f1;
+  width: 100%;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.resetTextAlign {
+  text-align: left;
+}
+
+.header {
+  text-align: left;
+  position: relative;
+  height: 60px;
+  border-bottom: 1px solid lightgrey;
+  background-color: white;
+
+  svg {
+    height: 100%;
+  }
+}
+
+.centerContent {
+  position: relative;
+  text-align: center;
+}
+
+.layoutContent {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 100%;
+  max-width: $mainMaxWidth;
+  padding: 1rem;
+}
+
+.st0 {
+  fill: #00ccbc;
+}

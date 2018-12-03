@@ -1,0 +1,60 @@
+.menuCard {
+  position: relative;
+  padding: 1rem;
+  cursor: pointer;
+
+  .content {
+    height: 100%;
+    display: flex;
+    padding: 1rem;
+  }
+
+  .pictureWrapper {
+    position: relative;
+    min-width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 9px;
+
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: 100%;
+      width: auto;
+    }
+  }
+
+  .texts {
+    padding-right: 0.5rem;
+  }
+
+  .cardTitle {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .description {
+    color: grey;
+    margin-bottom: 1rem;
+  }
+
+  .price {
+    font-size: 1.1rem;
+    color: grey;
+  }
+
+  .popular {
+    color: orangered;
+    margin-left: 0.5rem;
+
+    &::before {
+      display: inline-block;
+      position: relative;
+      top: 4px;
+      font-size: 2rem;
+      content: "⋆";
+    }
+  }
+}

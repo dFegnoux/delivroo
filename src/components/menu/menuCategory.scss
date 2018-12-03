@@ -1,0 +1,18 @@
+.menuCategory {
+  width: 100%;
+  margin-bottom: 3rem;
+
+  .title {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .itemsList {
+    display: flex;
+    flex-wrap: wrap;
+
+    > * {
+      width: 50%;
+    }
+  }
+}
