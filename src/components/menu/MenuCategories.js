@@ -1,11 +1,14 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import MenuCategory from "./MenuCategory";
+import Cart from "./Cart";
 import "./menuCategories.scss";
 
 class MenuCategories extends PureComponent {
   static propTypes = {
-    categories: PropTypes.array
+    categories: PropTypes.array,
+    updateCart: PropTypes.func.isRequired,
+    cart: PropTypes.object.isRequired
   };
 
   static defaultProps = {
@@ -13,20 +16,21 @@ class MenuCategories extends PureComponent {
   };
 
   render() {
-    const { categories } = this.props;
+    const { categories, updateCart, cart } = this.props;
+
     return (
       <div className="menuLayout">
         <div className="categoriesWrapper">
           {categories.map(category => (
-            <MenuCategory key={category.title} category={category} />
+            <MenuCategory
+              key={category[0]}
+              title={category[0]}
+              menus={category[1]}
+              updateCart={updateCart}
+            />
           ))}
         </div>
-        <div className="cartWrapper">
-          <div className="cart roundedItem">
-            <button>Valider mon panier</button>
-            <div>Votre panier est vide</div>
-          </div>
-        </div>
+        <Cart menus={cart} updateCart={updateCart} />
       </div>
     );
   }

@@ -11,7 +11,8 @@ class MenuCard extends PureComponent {
       picture: PropTypes.string,
       price: PropTypes.string,
       popular: PropTypes.bool
-    })
+    }),
+    updateCart: PropTypes.func.isRequired
   };
 
   static defaultProps = {
@@ -27,11 +28,18 @@ class MenuCard extends PureComponent {
 
   render() {
     const {
-      item: { title, description, picture, price, popular }
+      item,
+      item: { title, description, picture, price, popular },
+      updateCart
     } = this.props;
 
     return (
-      <div className="menuCard">
+      <div
+        className="menuCard"
+        onClick={() => {
+          updateCart(item, "add");
+        }}
+      >
         <div className="content roundedItem">
           <div className="texts">
             <div className="cardTitle">{title}</div>
@@ -41,9 +49,11 @@ class MenuCard extends PureComponent {
               {popular && <span className="popular">Populaire</span>}
             </div>
           </div>
-          <div className="pictureWrapper">
-            <img src={picture} alt={title} />
-          </div>
+          {picture && (
+            <div className="pictureWrapper">
+              <img src={picture} alt={title} />
+            </div>
+          )}
         </div>
       </div>
     );

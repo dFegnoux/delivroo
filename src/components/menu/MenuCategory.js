@@ -5,23 +5,18 @@ import "./menuCategory.scss";
 
 class MenuCategory extends PureComponent {
   static propTypes = {
-    category: PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      menus: PropTypes.array
-    })
+    title: PropTypes.string.isRequired,
+    menus: PropTypes.array,
+    updateCart: PropTypes.func.isRequired
   };
 
   static defaultProps = {
-    category: {
-      title: "Default category title",
-      menus: []
-    }
+    title: "Default category title",
+    menus: []
   };
 
   render() {
-    const {
-      category: { title, menus }
-    } = this.props;
+    const { title, menus, updateCart } = this.props;
 
     return (
       <div className="menuCategory">
@@ -29,7 +24,7 @@ class MenuCategory extends PureComponent {
         {menus.length && (
           <div className="itemsList">
             {menus.map(item => (
-              <MenuCard key={item.id} item={item} />
+              <MenuCard updateCart={updateCart} key={item.id} item={item} />
             ))}
           </div>
         )}
