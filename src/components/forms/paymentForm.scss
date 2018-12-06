@@ -1,0 +1,45 @@
+.paymentForm {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+  .input {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+
+    label {
+      margin-bottom: 0.5rem;
+    }
+
+    input {
+      height: 30px;
+      line-height: 30px;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      border: 0;
+      padding: 2px 5px;
+    }
+
+    .error {
+      margin-top: 0.5rem;
+      color: orangered;
+    }
+  }
+
+  .col-6 {
+    width: 50%;
+  }
+
+  .col-12 {
+    width: 100%;
+  }
+
+  button {
+    margin: 2rem auto 0;
+    height: 40px;
+    line-height: 40px;
+    width: 100%;
+    max-width: 150px;
+  }
+}

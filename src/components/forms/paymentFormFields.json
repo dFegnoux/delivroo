@@ -1,0 +1,45 @@
+[
+  {
+    "title": "Etage et numéro d'appartement",
+    "name": "flat",
+    "placeholder": "ex : Appartement n°15",
+    "col": 6
+  },
+  {
+    "title": "Digicode",
+    "name": "code",
+    "placeholder": "ex : B123",
+    "col": 6
+  },
+  {
+    "title": "Adresse",
+    "name": "street_address",
+    "placeholder": "ex : 100 Rue de Rivoli",
+    "hint": "Inclut le nom de votre rue et le numéro de votre bâtiment",
+    "col": 12
+  },
+  {
+    "title": "Code postal",
+    "name": "postcode",
+    "placeholder": "ex : 75001",
+    "col": 6
+  },
+  {
+    "title": "Ville",
+    "name": "city",
+    "placeholder": "ex : Paris",
+    "col": 6
+  },
+  {
+    "title": "Numéro de téléphone",
+    "name": "phone",
+    "placeholder": "+33 9 77 55 03 30",
+    "col": 12
+  },
+  {
+    "title": "Instructions pour votre livreur ?",
+    "name": "instructions",
+    "placeholder": "ex : C'est la porte noire près de l'animalerie. Merci d'appeler lorsque vous arrivez.",
+    "col": 12
+  }
+]

@@ -1,23 +1,17 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
-import NewsBlock from "../components/blocks/NewsBlock";
+import RestaurantBlock from "../components/blocks/RestaurantBlock";
 import PacmanLoader from "react-spinners/PacmanLoader";
-import MenuCategories from "../components/menu/MenuCategories";
+import Menu from "../components/menu/Menu";
+import { formatMenus } from "../helpers/menuHelpers";
 
 class Menus extends Component {
   state = {
     restaurant: {},
     menu: [],
-    cart: {}
+    cart: {},
+    showPayment: false
   };
-
-  /**
-   * Format menus from delivroo into an array of categories
-   * @param {Object} categories : Categories of the menus
-   * @returns a collection of categories
-   */
-  formatMenus = categories =>
-    Object.entries(categories).filter(category => category[1].length);
 
   /**
    * Add, remove menus from cart
@@ -44,7 +38,6 @@ class Menus extends Component {
           [menu.id]: {
             ...menu,
             name: menu.title,
-            price: menu.price,
             quantity: newQuantity
           }
         }
@@ -62,12 +55,16 @@ class Menus extends Component {
     }
   };
 
+  switchToPayment = (action = true) => {
+    this.setState(() => ({ showPayment: action }));
+  };
+
   componentDidMount() {
     // Get Menus
     axios.get("https://deliveroo-api.now.sh/menu").then(response => {
       if (response.data instanceof Object) {
         this.setState(() => ({
-          menu: this.formatMenus(response.data.menu) || [],
+          menu: formatMenus(response.data.menu) || [],
           restaurant: response.data.restaurant || {}
         }));
       }
@@ -75,11 +72,12 @@ class Menus extends Component {
   }
 
   render() {
-    const { menu, restaurant, cart } = this.state;
+    const { menu, restaurant, cart, showPayment } = this.state;
+
     return (
       <Fragment>
         {Object.keys(restaurant).length && (
-          <NewsBlock
+          <RestaurantBlock
             name={restaurant.name}
             description={restaurant.description}
             picture={restaurant.picture}
@@ -89,10 +87,12 @@ class Menus extends Component {
           {!menu.length ? (
             <PacmanLoader />
           ) : (
-            <MenuCategories
+            <Menu
               categories={menu}
               updateCart={this.updateCart}
               cart={cart}
+              showPayment={showPayment}
+              switchToPayment={this.switchToPayment}
             />
           )}
         </div>

@@ -10,22 +10,53 @@
   width: 100%;
   padding: 1rem;
 
+  > button {
+    height: 40px;
+    line-height: 40px;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
   ul {
     display: flex;
     flex-direction: column;
+    border-bottom: 1px solid lightgrey;
     width: 100%;
     list-style: none;
-    padding: 0;
+    padding: 1.5rem 0;
   }
 
   li {
     display: flex;
     justify-content: space-between;
-    margin: 0;
+    align-items: center;
+    margin: 0 0 0.2rem;
     padding: 0;
+
+    .itemName {
+      text-align: left;
+      width: 100%;
+      max-width: 50%;
+    }
 
     .total {
       font-size: 1.2rem;
     }
+  }
+
+  .mainTotal {
+    padding: 1rem 0;
+  }
+}
+
+.quantityModifier {
+  button {
+    width: 1.5rem;
+  }
+
+  .quantity {
+    display: inline-block;
+    text-align: center;
+    min-width: 1.5rem;
   }
 }

@@ -1,8 +1,8 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import "./newsBlock.scss";
+import "./restaurantBlock.scss";
 
-class NewsBlock extends PureComponent {
+class RestaurantBlock extends PureComponent {
   static propTypes = {
     name: PropTypes.string,
     description: PropTypes.string,
@@ -19,8 +19,8 @@ class NewsBlock extends PureComponent {
     const { name, description, picture } = this.props;
 
     return (
-      <div className="newsBlockWrapper centerContent">
-        <div className="newsBlockContent resetTextAlign">
+      <div className="restaurantBlockWrapper centerContent">
+        <div className="restaurantBlockContent resetTextAlign">
           <div className="texts">
             <div className="newsTitle">{name}</div>
             <div className="newsDescription">{description}</div>
@@ -34,4 +34,4 @@ class NewsBlock extends PureComponent {
   }
 }
 
-export default NewsBlock;
+export default RestaurantBlock;

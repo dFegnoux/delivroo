@@ -10,32 +10,56 @@ import "./cart.scss";
 class Cart extends Component {
   static propTypes = {
     menus: PropTypes.object.isRequired,
-    updateCart: PropTypes.func.isRequired
+    updateCart: PropTypes.func.isRequired,
+    switchToPayment: PropTypes.func.isRequired,
+    hasToDisplayButton: PropTypes.bool
+  };
+
+  static defaultProp = {
+    hasToDisplayButton: true
   };
 
   render() {
-    const { menus, updateCart } = this.props;
+    const {
+      menus,
+      updateCart,
+      switchToPayment,
+      hasToDisplayButton
+    } = this.props;
     const selectedMenus = Object.entries(menus);
     const isBtnDisabled = !selectedMenus.length ? "disabled" : null;
 
     return (
       <div className="cartWrapper">
         <div className="cart roundedItem">
-          <button disabled={isBtnDisabled}>Valider mon panier</button>
+          {!hasToDisplayButton && (
+            <button
+              onClick={() => {
+                switchToPayment();
+              }}
+              disabled={isBtnDisabled}
+            >
+              Valider mon panier
+            </button>
+          )}
           {selectedMenus.length ? (
             <Fragment>
               <ul>
                 {selectedMenus.map(menu => (
                   <li key={menu[0]}>
-                    <QuantityModifier item={menu[1]} updateCart={updateCart} />
-                    <span>{menu[1].name}</span>
+                    <QuantityModifier
+                      item={menu[1]}
+                      updateCart={updateCart}
+                      disabled={hasToDisplayButton}
+                    />
+                    <span className="itemName">{menu[1].name}</span>
                     <span className="total">
                       {formatToPriceString(menu[1].price * menu[1].quantity)}
                     </span>
                   </li>
                 ))}
               </ul>
-              <div class>
+              <div className="mainTotal">
                 <span>Total : </span>
                 <span>{calculateCartTotalPrice(menus)}</span>
               </div>
