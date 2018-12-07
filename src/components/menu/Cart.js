@@ -12,27 +12,22 @@ class Cart extends Component {
     menus: PropTypes.object.isRequired,
     updateCart: PropTypes.func.isRequired,
     switchToPayment: PropTypes.func.isRequired,
-    hasToDisplayButton: PropTypes.bool
+    disableButtons: PropTypes.bool
   };
 
   static defaultProp = {
-    hasToDisplayButton: true
+    disableButtons: true
   };
 
   render() {
-    const {
-      menus,
-      updateCart,
-      switchToPayment,
-      hasToDisplayButton
-    } = this.props;
+    const { menus, updateCart, switchToPayment, disableButtons } = this.props;
     const selectedMenus = Object.entries(menus);
     const isBtnDisabled = !selectedMenus.length ? "disabled" : null;
 
     return (
       <div className="cartWrapper">
         <div className="cart roundedItem">
-          {!hasToDisplayButton && (
+          {!disableButtons && (
             <button
               onClick={() => {
                 switchToPayment();
@@ -50,7 +45,7 @@ class Cart extends Component {
                     <QuantityModifier
                       item={menu[1]}
                       updateCart={updateCart}
-                      disabled={hasToDisplayButton}
+                      disabled={disableButtons}
                     />
                     <span className="itemName">{menu[1].name}</span>
                     <span className="total">

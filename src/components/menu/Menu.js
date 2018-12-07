@@ -48,7 +48,7 @@ class MenuCategories extends PureComponent {
           menus={cart}
           updateCart={updateCart}
           switchToPayment={switchToPayment}
-          hasToDisplayButton={showPayment}
+          disableButtons={showPayment}
         />
       </div>
     );
